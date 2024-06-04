@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const storedUser = JSON.parse(localStorage.getItem('user'));
             if (storedUser && storedUser.username === username && storedUser.password === password) {
                 alert('Inicio de sesión exitoso.');
-                window.location.href = 'index.html'; // Redirige a la página de inicio
+                window.location.href = '../index.html'; // Redirige a la página de inicio
             } else {
                 alert('Usuario o contraseña incorrectos.');
             }

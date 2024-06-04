@@ -10,34 +10,38 @@ document.addEventListener('DOMContentLoaded', function() {
     const registerForm = document.getElementById('register-form');
     const loginForm = document.getElementById('login-form');
 
-    registerForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const username = document.getElementById('new-username').value;
-        const password = document.getElementById('new-password').value;
-        const confirmPassword = document.getElementById('confirm-password').value;
+    if (registerForm) {
+        registerForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('new-username').value;
+            const password = document.getElementById('new-password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
 
-        if (password !== confirmPassword) {
-            alert('Las contraseñas no coinciden. Por favor, inténtalo de nuevo.');
-            return;
-        }
+            if (password !== confirmPassword) {
+                alert('Las contraseñas no coinciden. Por favor, inténtalo de nuevo.');
+                return;
+            }
 
-        const user = { username, password };
-        localStorage.setItem('user', JSON.stringify(user));
-        alert('Registro exitoso. Ahora puedes iniciar sesión.');
-        this.reset();
-    });
+            const user = { username, password };
+            localStorage.setItem('user', JSON.stringify(user));
+            alert('Registro exitoso. Ahora puedes iniciar sesión.');
+            this.reset();
+        });
+    }
 
-    loginForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        const storedUser = JSON.parse(localStorage.getItem('user'));
-        if (storedUser && storedUser.username === username && storedUser.password === password) {
-            alert('Inicio de sesión exitoso.');
-            // Aquí redirigirías al usuario a la página principal, etc.
-        } else {
-            alert('Usuario o contraseña incorrectos.');
-        }
-        this.reset();
-    });
+    if (loginForm) {
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const storedUser = JSON.parse(localStorage.getItem('user'));
+            if (storedUser && storedUser.username === username && storedUser.password === password) {
+                alert('Inicio de sesión exitoso.');
+                window.location.href = 'index.html'; // Redirige a la página de inicio
+            } else {
+                alert('Usuario o contraseña incorrectos.');
+            }
+            this.reset();
+        });
+    }
 });

@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito</title>
-
     <style>
         * {
             box-sizing: border-box;
@@ -20,8 +19,6 @@
             background-color: #000404;
             height: 60px;
         }
-
-        /* Sección principal | Main */
 
         .main {
             display: flex;
@@ -43,8 +40,7 @@
             grid-template-rows: 90px 30px;
             grid-template-areas:
                 "img description description"
-                "img precio eliminar"
-            ;
+                "img precio eliminar";
             box-shadow: 0 0 7px black;
             border-radius: 15px;
             transition: transform .5s;
@@ -55,13 +51,12 @@
         }
 
         .description__product,
-        .btn__comprar, 
+        .btn__comprar,
         .btn__eliminar,
         .precio {
             border-radius: inherit;
             border: none;
             background-color: #dfdfe3;
-
         }
 
         .img__product {
@@ -73,15 +68,12 @@
 
         .img__product:hover {
             transform: scale(.8) rotate(360deg);
-
         }
 
         .img__product img {
             width: 100%;
             height: auto;
         }
-
-        
 
         .description__product {
             grid-area: description;
@@ -110,15 +102,14 @@
             padding: 14px;
             border-radius: 25px;
             transition: transform .5s;
+            cursor: pointer;
         }
 
         .btn__comprar:hover {
             transform: scale(1.03);
         }
 
-        /* Animaciones para botones */
-
-        .btn__comprar, 
+        .btn__comprar,
         .btn__eliminar,
         span {
             position: relative;
@@ -126,9 +117,9 @@
             overflow: hidden;
         }
 
-        .btn__comprar::before, 
+        .btn__comprar::before,
         .btn__eliminar::before,
-        span::before  {
+        span::before {
             content: '';
             position: absolute;
             width: 130%;
@@ -145,18 +136,48 @@
             background-color: rgb(222, 78, 78);
             color: #dfdfe3;
         }
+
         .btn__comprar::before {
             background-color: rgb(104, 231, 102);
             color: #dfdfe3;
         }
 
-        .btn__comprar:hover::before, 
+        .btn__comprar:hover::before,
         .btn__eliminar:hover::before,
         span:hover::before {
             top: -30px;
             left: -40px;
         }
 
+/* Media queries para dispositivos móviles */
+@media (max-width: 600px) {
+    .container__product {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "img"
+            "description"
+            "precio"
+            "eliminar";
+    }
+
+    .description__product {
+        white-space: normal;
+    }
+
+    .img__product {
+        width: 100%;
+        text-align: center;
+    }
+
+    .img__product img {
+        width: 50%;
+    }
+
+    .btn__comprar {
+        width: 90%;
+    }
+}
     </style>
 </head>
 
@@ -168,53 +189,49 @@
     <main class="main">
         <div class="container__product">
             <div class="img__product">
-                <img src="https://media2.solodeportes.com.ar/media/catalog/product/cache/7c4f9b393f0b8cb75f2b74fe5e9e52aa/z/a/zapatillas-nike-air-max-systm-mujer-blanca-92423117-510010dm9538102-1.jpg"
-                    alt="">
+                <img src="https://media2.solodeportes.com.ar/media/catalog/product/cache/7c4f9b393f0b8cb75f2b74fe5e9e52aa/z/a/zapatillas-nike-air-max-systm-mujer-blanca-92423117-510010dm9538102-1.jpg" alt="">
             </div>
-            <p class="description__product">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed optio saepe,
-                veniam laboriosam repellendus consequuntur porro adipisci sequi dolore fugiat amet neque aperiam. Rerum
-                esse aut, fuga unde omnis tempore?
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate vitae, ex recusandae cumque eius
-                soluta facere excepturi, maxime ipsam cupiditate eaque delectus saepe perferendis sed adipisci
-                consectetur tempore sequi totam!</p>
+            <p class="description__product">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed optio saepe, veniam laboriosam repellendus consequuntur porro adipisci sequi dolore fugiat amet neque aperiam. Rerum esse aut, fuga unde omnis tempore? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate vitae, ex recusandae cumque eius soluta facere excepturi, maxime ipsam cupiditate eaque delectus saepe perferendis sed adipisci consectetur tempore sequi totam!</p>
             <span class="precio">$15210.22</span>
-            <button class="btn__eliminar">Eliminar</button>
+            <button class="btn__eliminar" onclick="eliminarProducto(event)">Eliminar</button>
         </div>
         <div class="container__product">
             <div class="img__product">
-                <img src="https://sneakerdenn.com/cdn/shop/products/image_63ba4104-f229-40d6-84d5-972dec3910fa_770x.jpg?v=1669086727"
-                    alt="">
+                <img src="https://sneakerdenn.com/cdn/shop/products/image_63ba4104-f229-40d6-84d5-972dec3910fa_770x.jpg?v=1669086727" alt="">
             </div>
-            <p class="description__product">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed optio saepe,
-                veniam laboriosam repellendus consequuntur porro adipisci sequi dolore fugiat amet neque aperiam. Rerum
-                esse aut, fuga unde omnis tempore?</p>
+            <p class="description__product">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed optio saepe, veniam laboriosam repellendus consequuntur porro adipisci sequi dolore fugiat amet neque aperiam. Rerum esse aut, fuga unde omnis tempore?</p>
             <span class="precio">$15210.22</span>
-            <button class="btn__eliminar">Eliminar</button>
+            <button class="btn__eliminar" onclick="eliminarProducto(event)">Eliminar</button>
         </div>
         <div class="container__product">
             <div class="img__product">
-                <img src="data:image/jpeg;base64,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"
-                    alt="">
+                <img src="https://i.ebayimg.com/images/g/dcAAAOSwgylj1Wsi/s-l1600.jpg" alt="">
             </div>
-            <p class="description__product">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed optio saepe,
-                veniam laboriosam repellendus consequuntur porro adipisci sequi dolore fugiat amet neque aperiam. Rerum
-                esse aut, fuga unde omnis tempore?</p>
+            <p class="description__product">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed optio saepe, veniam laboriosam repellendus consequuntur porro adipisci sequi dolore fugiat amet neque aperiam. Rerum esse aut, fuga unde omnis tempore?</p>
             <span class="precio">$15210.22</span>
-            <button class="btn__eliminar">Eliminar</button>
+            <button class="btn__eliminar" onclick="eliminarProducto(event)">Eliminar</button>
         </div>
         <div class="container__product">
             <div class="img__product">
-                <img src="https://zonasport.com.mx/wp-content/uploads/2022/03/air-max-ngo-2.jpg"
-                    alt="">
+                <img src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/1241ab0a0cc94138b8d3aef500c48d23_9366/Zapatillas_Adifom_SL_Rosa_HP6587_01_standard.jpg" alt="">
             </div>
-            <p class="description__product">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed optio saepe,
-                veniam laboriosam repellendus consequuntur porro adipisci sequi dolore fugiat amet neque aperiam. Rerum
-                esse aut, fuga unde omnis tempore?</p>
+            <p class="description__product">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed optio saepe, veniam laboriosam repellendus consequuntur porro adipisci sequi dolore fugiat amet neque aperiam. Rerum esse aut, fuga unde omnis tempore?</p>
             <span class="precio">$15210.22</span>
-            <button class="btn__eliminar">Eliminar</button>
+            <button class="btn__eliminar" onclick="eliminarProducto(event)">Eliminar</button>
         </div>
-        <button class="btn__comprar">Comprar</button>
+        <button class="btn__comprar" onclick="comprarProductos()">Comprar</button>
     </main>
+
+    <script>
+        function eliminarProducto(event) {
+            const productContainer = event.target.closest('.container__product');
+            productContainer.remove();
+        }
+
+        function comprarProductos() {
+            alert("Compra realizada con éxito.");
+        }
+    </script>
 </body>
 
 </html>
